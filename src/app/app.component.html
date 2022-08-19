@@ -1,0 +1,36 @@
+<app-toolbar tabindex="0" aria-label="News data app toolbar">
+  <div class="filters" aria-label="News data app Filters">
+    <button mat-raised-button (click)="clearFilters()">
+      <mat-icon aria-label="Clear Filters">close</mat-icon>
+      <span>Clear</span>
+    </button>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select State</mat-label>
+      <mat-select [(value)]="selectedLanguage" (selectionChange)="filtersChanged()">
+        <mat-option *ngFor="let language of languages" [value]="language.value">
+          {{ language.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select Label</mat-label>
+      <mat-select [(value)]="selectedCategory" (selectionChange)="filtersChanged()">
+        <mat-option *ngFor="let catagory of catagories" [value]="catagory.value">
+          {{ catagory.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</app-toolbar>
+
+<ng-container *ngIf="(data$ | async) as articles; else loading">
+  <app-cards [articles]="articles" [imagePlaceholder]="imagePlaceholder"></app-cards>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner [isShowing]="true" size="extra-large"></app-spinner>
+</ng-template>
+
+

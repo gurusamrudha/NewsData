@@ -1,0 +1,36 @@
+<div class="flex-container">
+  <mat-card class="example-card" *ngFor="let article of articles">
+    <mat-card-header>
+      <mat-card-title class="mat-card-header-text">{{article.title}}</mat-card-title>
+      <mat-card-subtitle>Author: {{article.creator || 'Anonymous'}}
+      </mat-card-subtitle>
+      <mat-card-subtitle>Date: {{article.pubDate | date: 'shortDate'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <div class="image-wrapper">
+      <img mat-card-image class="img-article" [src]="article.image_url ? article.image_url : imagePlaceholder" alt="No Pic">
+    </div>
+    <mat-card-content class="mat-card-content">
+      {{article.description || article.title}}
+    </mat-card-content>
+    <mat-card-actions class="action-buttons">
+      <button mat-button color="warn">
+        <mat-icon>thumb_up_alt</mat-icon>
+      </button>
+      <button mat-button color="warn">
+        <mat-icon>thumb_down_alt</mat-icon>
+      </button>
+
+      <button mat-button class="color-warn">
+        <span  class="icon-fix">
+             <i  class="fa fa-star-o" aria-hidden="true"></i>
+         </span>
+        <mat-icon >favorite</mat-icon>
+        &nbsp;Favorite
+      </button>
+      <a mat-button color="warn" href="article.link" target="_blank">
+        <mat-icon>visibility</mat-icon> View
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

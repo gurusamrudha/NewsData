@@ -1,0 +1,51 @@
+.app-spinner {
+    display: inline-block;
+    vertical-align: middle;
+
+    &[hidden] {
+        display: none;
+    }
+
+    &__circle {
+        animation: app-spinner 1s infinite linear;
+        border: .375rem solid rgba(green, .2);
+        border-radius: 100%;
+        border-top-color:  green;
+        box-sizing: border-box;
+        height: 2.5rem;
+        width: 2.5rem;
+
+        .app-spinner--extra-small & {
+            border-width: .125rem;
+            height: .875rem;
+            margin-top: -.125rem;
+            width: .875rem;
+        }
+
+        .app-spinner--small  & {
+            border-width: .1875rem;
+            height: 1.25rem;
+            width: 1.25rem;
+
+        }
+
+        .app-spinner--large & {
+            border-width: .75rem;
+            height: 5rem;
+            width: 5rem;
+        }
+
+        .app-spinner--extra-large & {
+            border-width: 1.5rem;
+            height: 10rem;
+            width: 10rem;
+        }
+    }
+
+}
+
+@keyframes app-spinner {
+    100% {
+        transform: rotate(360deg);
+    }
+}
